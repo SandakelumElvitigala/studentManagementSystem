@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studern Registration Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-dark">
+
+    <video autoplay muted loop id="background-video">
+        <source src="assests/4496268-hd_1920_1080_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <nav class="navbar navbar-expand-lg bg-secondary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Student Registration Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#" onclick="showHome();">Home</a>
+                    </li>
+                    <li class="nav-item" onclick="showRegForm();">
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                    <li class="nav-item" onclick="showViewForm();">
+                        <a class="nav-link" href="#">View Students</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="showInfoForm();">Info</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="main" id="main">
+        <div class="container cont1">
+            
+            <h1 class="mt-5">Student Registration System</h1>
+
+            <p class="mt-5 mb-5">
+                "Welcome to the Student Registration Portal! This platform allows you to easily register new students by
+                providing their personal details, including contact information, date of birth, guardian details, and
+                address. You can also upload a student's photo for better identification. Once registered, students'
+                information will be securely stored in our database. Additionally, you can view the list of all
+                registered
+                students, complete with their details and photos, ensuring easy access and management. Our system is
+                designed to make student registration and record-keeping simple, efficient, and user-friendly."
+            </p>
+            <div class="row">
+                <div class="col c1">
+                    <button class="btn btn-outline-success" onclick="showRegForm();">Register a Student</button>
+                </div>
+                <div class="col c2">
+                    <button class="btn btn-outline-secondary" onclick="showViewForm();">View Registered List</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="addDiv" id="add">
+        <div class="container">
+            <div class="row mt-3">
+
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <hr>
+                        <h6 class="mb-3">Student Details</h6>
+                        <hr class="mb-5">
+
+                        <center>
+                            <div class="imgDiv">
+                                <img src="assests/profile-removebg-preview.png" id="imagePreview1" alt="profilepic">
+                                <img id="imagePreview" alt="Image preview will appear here" style="display: none;" />
+                            </div>
+
+                            <div>
+                                <label class="form-label" for="image-input" id="trigger-text"
+                                    style="cursor: pointer;">Choose a profilepic</label>
+                                <input type="file" name="image-input" id="image-input" accept="image/*"
+                                    class="form-control" style="display: none;" required>
+                            </div>
+                        </center>
+
+                        <div class="mt-3">
+                            <label class="form-label" for="txt-name">Student Name</label>
+                            <input type="text" name="" id="txt-name" class="form-control" required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label class="form-label" for="txt-contact">Student Contact</label>
+                            <input type="text" name="txt-contact" id="txt-contact" class="form-control" required>
+                        </div>
+
+                        <div class="mt-3">
+                            <label class="form-label" for="dob">Date of Birth</label>
+                            <input type="date" name="" id="dob" class="form-control" required>
+                        </div>
+
+                        <textarea id="base64-output" rows="10" cols="50" style="display: none;"></textarea>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-6">
+
+
+
+
+
+                    <hr>
+                    <h6>Guardian Details</h6>
+                    <hr>
+
+                    <div class="mt-3">
+                        <label class="form-label" for="txt-name">Guardian Name</label>
+                        <input type="text" name="" id="txt-gname" class="form-control" required>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label" for="txt-address">Address</label>
+                        <input type="text" name="" id="txt-address" class="form-control" required>
+                    </div>
+
+                    <div class="mt-3">
+                        <label class="form-label" for="txt-name">Guardian Contact</label>
+                        <input type="text" name="" id="txt-gcontact" class="form-control" required>
+                    </div>
+
+                    <div class="mt-5">
+                        <div class="col bc2">
+                            <button class="btn btn-outline-success" id="regBtn">Register</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-3 mb-5">
+                        <div class="col bc1">
+                            <button class="btn btn-outline-danger" id="clrBtn">Clear</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="viewDiv" id="view">
+        <div class="container">
+            <center>
+                <h1 class="mt-3">
+                    View Registered List
+                </h1>
+
+                <table class="table table-dark table-hover mt-5" id="datatbl">
+                    <thead>
+                        <th>StudentId</th>
+                        <th>Name</th>
+                        <th>Contact</th>
+                        <th>DoB</th>
+                    </thead>
+
+                    <tbody id="tbdy">
+
+                    </tbody>
+                </table>
+            </center>
+        </div>
+    </div>
+
+
+    <div class="info" id="info">
+        <div class="container mt-5">
+
+            <center>
+                <h2>Welcome to the Student Registration Portal</h2>
+                <p class="mt-3 mb-5">
+                    The Student Registration Portal is designed to provide a simple and user-friendly way for new
+                    students to register for their educational journey. To ensure a smooth and secure registration
+                    process, we have implemented several validations and features to protect and enhance your
+                    experience.
+                </p>
+            </center>
+
+
+            <h4>Applied Validations</h4>
+
+            <ul>
+                <li><strong>Date of Birth Validation:</strong> The system ensures the date of birth is not a future
+                    date.</li>
+                <li><strong>Unique Contact Number Validation:</strong> Ensures each student has a unique contact number.
+                </li>
+                <li><strong>Contact Number Format Validation:</strong> Only numeric values are accepted in contact
+                    number fields.</li>
+                <li><strong>Mandatory Field Validation:</strong> Required fields must be completed for successful
+                    registration.</li>
+            </ul>
+
+
+            <h4 class="mt-5">How to Use the Portal</h4>
+
+            <ol>
+                <li><strong>Fill in Your Information:</strong> Enter your name, contact number, date of birth, and other
+                    required details.</li>
+                <li><strong>Upload Your Profile Image:</strong> Click on the image field to upload a profile picture.
+                </li>
+                <li><strong>Submit:</strong> Click the Register button once all fields are completed.</li>
+                <li><strong>Confirmation:</strong> After successful registration, you will receive a confirmation
+                    notification.</li>
+            </ol>
+
+            <center>
+                <h4 class="mt-5 mb-3">Security and Privacy</h4>
+                <p class="mb-5">Your privacy is important to us. All personal information provided during registration
+                    is securely
+                    processed and stored. Strong security measures are in place to ensure your data is protected at all
+                    times.</p>
+            </center>
+        </div>
+    </div>
+
+
+
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <img src="..." class="rounded me-2" alt="">
+                <strong class="me-auto" id="topic"></strong>
+                <small>Just Now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="msg">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Student Details</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <center>
+
+                        <div class="row imgrow">
+                            <div class="col-2"></div>
+                            <div class="col-8">
+                                <div id="imgdivModal">
+                                    <img id="imagePreview2" src="" alt="profilepic" />
+                                </div>
+                            </div>
+                            <div class="col-2"></div>
+                        </div>
+                        <table>
+                            <tr>
+                                <td><strong>ID &nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                                <td>
+                                    <center>:</center>
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;<span id="studentId"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Name&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                                <td>
+                                    <center>:</center>
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;<span id="studentName"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contact&nbsp;&nbsp;&nbsp;&nbsp;</strong> </td>
+                                <td>
+                                    <center>:</center>
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;<span id="studentContact"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Date of Birth&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                                <td>
+                                    <center>:</center>
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;<span id="studentDob"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guardian's name&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                                <td>
+                                    <center>:</center>
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;<span id="guardianNameCell"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Guardian's contact&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                                <td>
+                                    <center>:</center>
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;<span id="guardianContactCell"></span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Address&nbsp;&nbsp;&nbsp;&nbsp;</strong></td>
+                                <td>
+                                    <center>:</center>
+                                </td>
+                                <td>&nbsp;&nbsp;&nbsp;&nbsp;<span id="addressCell"></span></td>
+                            </tr>
+                        </table>
+                    </center>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Understood</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="process.js"></script>
+    <script src="showAll.js"></script>
+</body>
+
+</html>
